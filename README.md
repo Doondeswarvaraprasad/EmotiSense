@@ -131,7 +131,7 @@ Start Command: gunicorn app:app
 🔌 Offer REST API endpoints for integration
 
 👤 Author
-Tammina Doondeswara Prasad
+Tammina Doondeswara Vara Prasad
 
 🔗 LinkedIn: https://linkedin.com/in/tammina-doondeswar-31910b22b
 
