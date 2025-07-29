@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result - EmotiSense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function animateScore(score, sentiment) {
+            let counter = 0;
+            const display = document.getElementById('score');
+            const bar = document.querySelector('.fill');
+
+            if(score <= 34) bar.style.background = "linear-gradient(90deg, #ff4d4d, #cc0000)";
+            else if(score <= 59) bar.style.background = "linear-gradient(90deg, #ffcc00, #ff9900)";
+            else bar.style.background = "linear-gradient(90deg, #00ff99, #00cc66)";
+
+            const interval = setInterval(() => {
+                display.textContent = counter;
+                bar.style.width = counter + "%";
+                if (counter >= score) clearInterval(interval);
+                counter++;
+            }, 15);
+        }
+
+        window.onload = () => {
+            animateScore({{ score }}, "{{ sentiment }}");
+        };
+    </script>
+</head>
+<body style="background-image: url('{{ url_for('static', filename='bg_' + sentiment + '.png') }}');">
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+        <h2>Input: "{{ text }}"</h2>
+
+        <div class="score-meter"><div class="fill"></div></div>
+        <h3 id="score">{{ score }}</h3>
+        <h1 class="emoji">{{ emoji }}</h1>
+        <h2>Sentiment: {{ sentiment | capitalize }}</h2>
+
+        <a href="/">🔄 Try Again</a>
+    </div>
+</body>
+</html>

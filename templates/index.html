@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EmotiSense - Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-image: url('{{ url_for('static', filename='bg_index.png') }}');">
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+        <h1>Welcome to <span class="brand">EmotiSense</span></h1>
+        <form action="/" method="post">
+            <textarea name="user_input" placeholder="Enter your text..." required></textarea>
+            <button type="submit">Analyze Sentiment</button>
+        </form>
+    </div>
+</body>
+</html>
